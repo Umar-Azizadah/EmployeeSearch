@@ -33,6 +33,11 @@ static int compareEmployeeName(const void *targetPtr, PtrToConstEmployee tableVa
     return strcmp((char *)targetPtr, tableValuePtr->name);  // const void *targetPtr ==> typecast as char pointer then pass into strcmp()
 }
 
+static int compareEmployeePhoneNumber(const void *targetPtr, PtrToConstEmployee tableValuePtr) {
+    //function compares the target phone number with the phone number in the employee record
+    return strcmp((char *)targetPtr, tableValuePtr->phone); 
+}
+
 // These are called wrappers. These functions are what you will use in your main!!!
 PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int size, long number) {
     return searchEmployeeTable(ptr, size, &number, compareEmployeeNumber);
@@ -40,4 +45,8 @@ PtrToEmployee searchEmployeeByNumber(PtrToConstEmployee ptr, int size, long numb
 
 PtrToEmployee searchEmployeeByName(PtrToConstEmployee ptr, int size, char *name) {
     return searchEmployeeTable(ptr, size, name, compareEmployeeName);
+}
+
+PtrToEmployee searchEmployeeByPhone(PtrToConstEmployee ptr, int size, char *phone) {
+    return searchEmployeeTable(ptr, size, phone, compareEmployeePhoneNumber);
 }

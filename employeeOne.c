@@ -48,5 +48,3 @@ PtrToEmployee searchEmployeeBySalary(PtrToConstEmployee ptr, int tablesize, doub
     return NULL; //this will only happen if no salary matches in loop above
 }
 
-
-
