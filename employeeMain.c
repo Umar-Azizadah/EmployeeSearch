@@ -10,7 +10,8 @@ int main(void) {
     // defined in employeeSearchOne.c
     PtrToEmployee searchEmployeeByNumber(const Employee table[], int sizeTable, long numberToFind);
     PtrToEmployee searchEmployeeByName(const Employee table[], int sizeTable, char *nameToFind);
-    PtrToEmployee searchEmployeeByPhone(const Employee table[], int sizeTable, char *phoneToFind);
+    PtrToEmployee searchEmployeeByPhone(const Employee table[], int sizeTable, char *phoneToFind); 
+    PtrToEmployee searchEmployeeBySalary(const Employee table[], int sizeTable, double salaryToFind);
 
     // defined in employeeTable.c
     extern Employee EmployeeTable[];
@@ -32,7 +33,6 @@ int main(void) {
     else
         printf("Employee Tony Bobcat is NOT found in the record\n");
 
-   
 
     matchPtr = searchEmployeeByPhone(EmployeeTable, EmployeeTableEntries, "909-555-1235");
 
@@ -45,5 +45,19 @@ int main(void) {
         printf("Employee with phone number 123-456-1235 is in record %d\n", matchPtr - EmployeeTable); // prints the index of the employee in the array
     else
         printf("Employee with phone number 123-456-1235 is NOT found in the record\n"); // if no match is found, print this message
+
+    matchPtr = searchEmployeeBySalary(EmployeeTable, EmployeeTableEntries, 8.32); //searches for an employee with a salary of 8.32
+
+    if (matchPtr != NULL) // checks if the pointer is not null, meaning it found a match
+        printf("Employee with salary 8.32 is in record %d\n", matchPtr - EmployeeTable); // prints the index of the employee in the array
+    else
+        printf("Employee with salary 8.32 is NOT found in the record\n"); // if no match is found, print this message
+    
+    matchPtr = searchEmployeeBySalary(EmployeeTable, EmployeeTableEntries, 10.00); //searches for an employee with a salary of 10.00 which does not exist
+
+    if(matchPtr != NULL) // checks if the pointer is not null, meaning it found a match
+        printf("Employee with salary 10.00 is in record %d\n", matchPtr - EmployeeTable); // prints the index of the employee in the array
+    else
+        printf("Employee with salary 10.00 is NOT found in the record\n"); // if no match is found, print this message
     return EXIT_SUCCESS;
 }
